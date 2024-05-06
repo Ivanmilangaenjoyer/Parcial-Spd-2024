@@ -33,7 +33,7 @@ void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
 
 ## :robot: Link al proyecto
 - [proyecto](https://www.tinkercad.com/things/aOYiibnDjWu)
-## :tv: Link al video del proceso
+## :laughing: Link al video del proceso
 - [video](https://www.youtube.com/watch?v=VyGjE8kx-O0)
 
 ---
