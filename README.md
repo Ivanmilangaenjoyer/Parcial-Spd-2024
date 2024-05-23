@@ -5,6 +5,7 @@
 ## Integrantes 
 - Matias M. Quiroz
 - Esteban M. Quiroz
+- juan Fresone
 
 
 ## Proyecto: Contador binario.
