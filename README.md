@@ -3,8 +3,8 @@
 
 
 ## Integrantes 
+- Matias M. Quiroz
 - Esteban M. Quiroz
-- Dario Cuda 
 
 
 ## Proyecto: Contador binario.
