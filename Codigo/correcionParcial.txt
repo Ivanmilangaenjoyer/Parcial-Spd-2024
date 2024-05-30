@@ -1,0 +1,223 @@
+// C++ code Ivás Sacks TT 2024 
+// Iván Sacks A211
+
+/*
+SIMULACRO PARCIAL
+*/
+# define Rojo 13
+# define Verde 12
+# define BotonA 3
+# define BotonB 2
+# define Buzzer 8
+
+
+int lecturaSensor;
+int temperatura;
+int sistemaIncendios;
+int botonPrendido;
+int botonApagado;
+
+void setup()
+{
+  pinMode(BotonA, INPUT);
+  pinMode(BotonB, INPUT);
+  pinMode(Rojo, OUTPUT);
+  pinMode(Verde, OUTPUT);
+  pinMode(11,OUTPUT); 
+  pinMode(10,OUTPUT); 
+  pinMode(9,OUTPUT); 
+  pinMode(5,OUTPUT); 
+  pinMode(4,OUTPUT); 
+  pinMode(6,OUTPUT); 
+  pinMode(7,OUTPUT); 
+  pinMode(Buzzer, OUTPUT);
+  Serial.begin(9600);
+  sistemaIncendios = LOW;
+}
+
+void cero()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void uno()
+{
+  digitalWrite(9, HIGH);
+  digitalWrite(4, HIGH);
+}
+void dos()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void tres()
+{
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void cuatro()
+{
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(4, HIGH);
+}
+void a()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void b()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void c()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+}
+void d()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void e()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+}
+
+void apagarSegmentos()
+{
+  digitalWrite(11, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(4, LOW);
+}
+void prenderSistema(int botonPrendido, int botonApagado)
+  {
+      if (botonPrendido)
+    {
+      sistemaIncendios = HIGH;
+    }
+    else if (botonApagado)
+    {         
+      sistemaIncendios = LOW;   
+    }
+  }
+void loop()
+{
+  botonPrendido = digitalRead(BotonA);
+  botonApagado = digitalRead(BotonB);
+  apagarSegmentos();
+  lecturaSensor = analogRead(A0);
+  temperatura = map(lecturaSensor, 23, 360, -40, 125);
+
+  prenderSistema(botonPrendido, botonApagado);
+  
+  if (sistemaIncendios)
+  {  
+    if (temperatura > 60)
+    {
+      tone(Buzzer, 392, 200);
+      digitalWrite(Rojo, HIGH);
+      delay(50);
+      digitalWrite(Rojo, LOW);
+      delay(50);
+      digitalWrite(Verde, HIGH);
+      delay(50);
+      digitalWrite(Verde, LOW);
+      delay(50);
+    }
+    
+    if (temperatura < 30)
+    {
+      cero();
+    }
+    else if (temperatura <= 34)
+    {
+      uno();
+    }
+    else if (temperatura <= 39)
+    {
+      dos();
+    }
+    else if (temperatura <= 44)
+    {
+      tres();
+    }
+    else if (temperatura <= 49)
+    {
+      cuatro();
+    }
+    else if (temperatura <= 54)
+    {
+      a();
+    }
+    else if (temperatura <= 59)
+    {
+      b();
+    }
+    else if (temperatura <= 64)
+    {
+      c();
+      delay(80);
+    }
+    else if (temperatura <= 69)
+    {
+      d();
+      delay(60);
+    }
+    else if (temperatura >= 70)
+    {
+      e();
+      delay(30);
+    }
+
+    }
+
+   }
+
+  
+  
+
+ 
+  
+  
+
+
+  
+
+
