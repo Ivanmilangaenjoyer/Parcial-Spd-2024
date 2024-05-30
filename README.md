@@ -1,8 +1,8 @@
 # :rotating_light: Documentanción :rotating_light::
-## Información Alumno :school: :
+## Información Alumno:
 Iván Sacks TT SPD A211 :pray:
 
-## Diagrama De Conexiones :tada:
+## Diagrama De Conexiones:
 ![Tinkercad](./img/diagrama.png)
 
 
