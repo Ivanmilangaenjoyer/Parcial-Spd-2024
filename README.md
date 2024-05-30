@@ -1,55 +1,42 @@
-# Ejemplo Documentación 
-![Tinkercad](./img/ArduinoTinkercad.jpg)
+# Documentanción:
+## Información Alumno:
+Iván Sacks TT SPD A211:pray:
+
+## Diagrama De Conexiones
+![Tinkercad](./img/diagrama.png)
 
 
-## Integrantes 
-- Matias M. Quiroz
-- Esteban M. Quiroz
-- Mateo
-
-
-## Proyecto: Contador binario.
-![Tinkercad](./img/ContadorBinario.png)
+## :star:Proyecto: Sistema De Incendios:star:
+![Tinkercad](./img/sistemaIncendios.png)
 
 
 ## Descripción
-En este parrafo deberan describir que funcion cumple su proyecto. Que solucion esta ofreciendo.
+El proyecto es un sistema de incendios que avisa a través de sensores lumínicos y sonoros que ha ocurrido uno.
 
-## Función principal
-Esta funcion se encarga de encender y apagar los leds.
+## Función principal:raised_hands:
+Esta funcion se encarga de encender y apagar el sistema de incendios
 
-B0, B1, B2, B3 son #define que utilizamos para agregar los leds, asociandolo a pines de la placa arduino.
+botonPrendido y  botonApagado #Son variables asignadas a los botones.
 
-(Breve explicación de la función)
+(Si el botónPrendido esta en true, se prende el sistema . Yi el botónApagado esta en true, se apaga el sistema) 
 
-~~~ C (lenguaje en el que esta escrito)
-void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
-{
-  digitalWrite(B3,estado3);
-  digitalWrite(B2,estado2);
-  digitalWrite(B1,estado1);
-  digitalWrite(B0,estado0);
-}
+~~~ C++ :collision:
+void prenderSistema(int botonPrendido, int botonApagado)
+  {
+    if (botonPrendido)
+  {
+    sistemaIncendios = HIGH;
+  }
+  else if (botonApagado)
+  {         
+    sistemaIncendios = LOW;   
+  }
+  }
 ~~~
 
-## :robot: Link al proyecto
-- [proyecto](https://www.tinkercad.com/things/aOYiibnDjWu)
-## :video_camera: Link al video del proceso
-- [video](https://www.youtube.com/watch?v=VyGjE8kx-O0)
+## :muscle: Link al proyecto
+- [proyecto](https://www.tinkercad.com/things/kaS3G6QeOcw-simulacro-parcial-ivan-sacks-a211/editel?sharecode=Df2IqMLfKf2Ypm6Jcaq48aBOQSW4cYphO8chJzJHWeQ)
 
----
-### Fuentes
-- [Consejos para documentar](https://www.sohamkamani.com/how-to-write-good-documentation/#architecture-documentation).
-
-- [Lenguaje Markdown](https://markdown.es/sintaxis-markdown/#linkauto).
-
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-
-- [Tutorial](https://www.youtube.com/watch?v=oxaH9CFpeEE).
-
-- [Emojis](https://gist.github.com/rxaviers/7360908).
-
----
 
 
 
