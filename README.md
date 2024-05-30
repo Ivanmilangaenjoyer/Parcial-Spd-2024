@@ -2,7 +2,7 @@
 ## Información Alumno:
 Iván Sacks TT SPD A211 :pray:
 
-## Diagrama De Conexiones
+## Diagrama De Conexiones :feelsgood:
 ![Tinkercad](./img/diagrama.png)
 
 
@@ -10,7 +10,7 @@ Iván Sacks TT SPD A211 :pray:
 ![Tinkercad](./img/sistemaIncendios.png)
 
 
-## Descripción
+## Descripción 
 El proyecto es un sistema de incendios que avisa a través de sensores lumínicos y sonoros que ha ocurrido uno.
 
 ## Función principal :raised_hands:
