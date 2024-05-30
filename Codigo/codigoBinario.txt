@@ -1,140 +1,221 @@
+// C++ code Ivás Sacks TT 2024 
+// Iván Sacks A211
+
 /*
------------CONSIGNA PRIMER PARCIAL----------------------------------
-	Crear un algoritmo que represente un contador binario, 
-    el primer led(que se encuentra a la izq) es el mas significativo
-    los valores van de 0 a 15.
-    
----------------------------------------------------------------------
+SIMULACRO PARCIAL
 */
+# define Rojo 13
+# define Verde 12
+# define BotonA 3
+# define BotonB 2
+# define Buzzer 8
 
-#define B3 12
-#define B2 11
-#define B1 10
-#define B0 9
 
-#define TIEMPO 1000
+int lecturaSensor;
+int temperatura;
+int sistemaIncendios;
+int botonPrendido;
+int botonApagado;
 
-void PrenderLed(int encenderLed);
-void EncenderBinario(int estado3, int estado2,int estado1,int estado0);
 void setup()
 {
-  pinMode(B3, OUTPUT);
-  pinMode(B2, OUTPUT);
-  pinMode(B1, OUTPUT);
-  pinMode(B0, OUTPUT);
-  
+  pinMode(BotonA, INPUT);
+  pinMode(BotonB, INPUT);
+  pinMode(Rojo, OUTPUT);
+  pinMode(Verde, OUTPUT);
+  pinMode(11,OUTPUT); 
+  pinMode(10,OUTPUT); 
+  pinMode(9,OUTPUT); 
+  pinMode(5,OUTPUT); 
+  pinMode(4,OUTPUT); 
+  pinMode(6,OUTPUT); 
+  pinMode(7,OUTPUT); 
+  pinMode(Buzzer, OUTPUT);
   Serial.begin(9600);
-  
+  sistemaIncendios = LOW;
+}
+void cero()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void uno()
+{
+  digitalWrite(9, HIGH);
+  digitalWrite(4, HIGH);
+}
+void dos()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void tres()
+{
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void cuatro()
+{
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(4, HIGH);
+}
+void cinco()
+{
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+}
+void seis()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+}
+void siete()
+{
+  digitalWrite(9, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void ocho()
+{
+  digitalWrite(11, HIGH);
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
+}
+void nueve()
+{
+  digitalWrite(10, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(7, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(4, HIGH);
 }
 
-int  contador=0;
-
-
+void apagarSegmentos()
+{
+  digitalWrite(11, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(4, LOW);
+}
 void loop()
-{  
-   
-  contador++;
-  if(contador>15)
-  {
-    contador=0;
-  }
-  PrenderLed(contador);
-  delay(TIEMPO);
-}
-
-//muestra el numero binario
-void PrenderLed(int encenderLed)
 {
-  Serial.println(encenderLed);
-  switch(encenderLed)
+  	botonPrendido = digitalRead(BotonA);
+  	botonApagado = digitalRead(BotonB);
+    apagarSegmentos();
+    lecturaSensor = analogRead(A0);
+    temperatura = map(lecturaSensor, 23, 360, -40, 125);
+
+  
+  if (botonPrendido)
   {
-    case 0: 
-    	EncenderBinario(LOW,LOW,LOW,LOW);
-  	  break;
-    
-    
-    //Dato 0001
-    case 1: 
-    	EncenderBinario(LOW,LOW,LOW,HIGH);
-  	  break;
- 
-    //Dato 0010
-    case 2: 
-    	EncenderBinario(LOW,LOW,HIGH,LOW);
- 	  break;
-  
-    //Dato 0011
-    case 3:   
-    	EncenderBinario(LOW,LOW,HIGH,HIGH);
-      break;
-  
-    //Dato 0100
-    case 4:
-    	EncenderBinario(LOW,HIGH,LOW,LOW);
-     break;
-    
-    //Dato 0101
- 	 case 5:   
-        EncenderBinario(LOW,HIGH,LOW,HIGH);
-  	  break;
-    
-  //Dato 0110
-      case 6:  
-    	EncenderBinario(LOW,HIGH,HIGH,LOW);
-      break;
-    
-  //Dato 0111  
-      case 7:  
-    	EncenderBinario(LOW,HIGH,HIGH,HIGH);
-      break;
-    
-  //Dato 1000
-       case 8:
-    	EncenderBinario(HIGH,LOW,LOW,LOW);
-      break;   
-  
-  //Dato 1001
-      case 9:   
-    	EncenderBinario(HIGH,LOW,LOW,HIGH);
-      break;
-    
-  //Dato 1010
-  	  case 10:  
-    	EncenderBinario(HIGH,LOW,HIGH,LOW);
-      break;
-    
-  //Dato 1011
-      case 11:
-    	EncenderBinario(HIGH,LOW,HIGH,HIGH);
-      break;
-    
-  //Dato 1100
-      case 12:  
-    	EncenderBinario(HIGH,HIGH,LOW,LOW);   
-      break;
-  //Dato 1101
-      case 13:
-    	EncenderBinario(HIGH,HIGH,LOW,HIGH);
-      break;
-  //Dato 1110
-      case 14:
-    	EncenderBinario(HIGH,HIGH,HIGH,LOW);
-      break;
-    
-  //Dato 1111
-  	  case 15:
-    	EncenderBinario(HIGH,HIGH,HIGH,HIGH);
-      break;
-    
+    sistemaIncendios = HIGH;
+  }
+  else
+  {
+    if (botonApagado)
+    {
+      sistemaIncendios = LOW;
+    }
   }
   
-}
+  if (sistemaIncendios)
+  {  
+    if (temperatura > 60)
+    {
+      tone(Buzzer, 392, 200);
+      digitalWrite(Rojo, HIGH);
+      delay(50);
+      digitalWrite(Rojo, LOW);
+      delay(50);
+      digitalWrite(Verde, HIGH);
+      delay(50);
+      digitalWrite(Verde, LOW);
+      delay(50);
+    }
+    if (temperatura < 30)
+    {
+      cero();
+    }
+    else if (temperatura <= 34)
+    {
+      uno();
+    }
+    else if (temperatura <= 39)
+    {
+      dos();
+    }
+    else if (temperatura <= 44)
+    {
+      tres();
+    }
+    else if (temperatura <= 49)
+    {
+      cuatro();
+    }
+    else if (temperatura <= 54)
+    {
+      cinco();
+    }
+    else if (temperatura <= 59)
+    {
+      seis();
+    }
+    else if (temperatura <= 64)
+    {
+      siete();
+      delay(80);
+    }
+    else if (temperatura <= 69)
+    {
+      ocho();
+      delay(60);
+    }
+    else if (temperatura >= 70)
+    {
+      nueve();
+      delay(30);
+    }
 
-//Enciende cada led dependiendo el estado que recibe
-void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
-{
-  digitalWrite(B3,estado3);
-  digitalWrite(B2,estado2);
-  digitalWrite(B1,estado1);
-  digitalWrite(B0,estado0);
-}
+    }
+
+   }
+
+  
+  
+
+  
+  
+  
+
+
+  
+
+
+
